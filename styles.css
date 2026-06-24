@@ -1,0 +1,344 @@
+/* ===== design tokens / Variables ====== */
+:root {
+  /* colors */
+  --bg: #0b0d12;
+  --card: #121622;   
+  --text: #e9edf7;
+  --muted: #9aa4b2;
+  --line: rgba(255, 255, 255, 0.8);
+
+  /* shape */
+  --r: 16px;
+
+  /* spacing scale */
+  --s1: 8px;
+  --s2: 12px;    
+  --s3: 16px;
+  --s4: 24px;
+  --s5: 32px;
+  --s6: 48px;
+
+  /* layout */
+  --max: 1100px;
+
+  /* shadow */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== rest-ish basics ====== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3{
+    line-height: 1.15;
+    margin: 0 0 var(--s3);
+
+}
+
+p{
+    margin: 0 0 var(--s4);
+    color: var(--muted);
+}
+
+/* Screen reader only utility  */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+/* ===== Header ====== */
+.SiteHeader {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--s3);
+    background: rgba(11, 13, 18, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+ .SiteHeader .Logo {
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+/*Primary nav (desktop) */
+.Nav {
+    display: flex;
+    gap: var(--s4);
+    align-items: center;
+}
+
+/* Mobile menu button (hidden on desktop) */
+.IconButton {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* ===== Page container ====== */
+.Page {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: var(--s6) var(--s3);
+}
+
+/* ===== Hero ====== */
+.Hero {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr;
+  gap: var(--s5);
+  align-items: center;
+  min-height: 355px;
+  padding: 40px;
+  background:rgba(255, 255, 255, 0.035);
+  
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.Hero_Content h1 {
+  max-width: 720px;
+  letter-spacing: -0.05em;
+  color: var(--text);
+}
+
+.Hero_Content p {
+  max-width: 760px;
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 650;
+  line-height: 1.55;
+  color: rgba(231, 233, 240, 0.68);
+}
+
+.Hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin-top: var(--s4);
+}
+
+.Btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 0 24px;
+  border-radius: 17px;
+  font-size: 20px;
+  font-weight: bold;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.Btn:hover {
+  transform: translateY(-2px);
+}
+
+.Btn--primary {
+  background: #34373e;
+  color: #f2f4f8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.Btn--ghost {
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.78);
+  border: 1px solid transparent;
+}
+
+.Btn--ghost:hover {
+  border-color: var(--line);
+}
+
+/* ===== Features ====== */
+.Features {
+  margin-top: var(--s5);
+  padding: 38px 40px 58px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.Features h2 {
+  margin-bottom: var(--s4);
+  font-size: clamp(26px, 3vw, 36px);
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.Tabs {
+  width: 100%;
+}
+
+.Tabs__list {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.Tab {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: rgba(233, 237, 247, 0.78);
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.055);
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.Tab:hover {
+  color: var(--text);
+  background: #34373e;
+  
+}
+
+.Tab.is-active,
+.Tab[aria-selected="true"] {
+  color: #f4f6fb;
+  background: #34373e;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.Tabs__panel {
+  margin-top: var(--s4);
+  color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 780px) {
+  .Features {
+    padding: 28px;
+  }
+
+  .Tabs__list {
+    flex-wrap: wrap;
+    gap: var(--s2);
+  }
+
+  .Tab {
+    min-height: 44px;
+  }
+}
+
+/* ===== Stat Card ====== */
+.Hero__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 270px;
+  padding: var(--s5);
+  background: linear-gradient(180deg, #202229, #1b1d24);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 18px;
+  box-shadow: 0 22px 35px rgba(0, 0, 0, 0.38);
+}
+
+.Stat {
+  text-align: center;
+}
+
+.Stat__value {
+  font-size: clamp(54px, 7vw, 72px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: #f2f4fa;
+}
+
+.Stat__label {
+  margin-top: 14px;
+  font-size: 21px;
+  font-weight: 700;
+  color: rgba(231, 233, 240, 0.7);
+}
+
+/* ===== Responsive ====== */
+@media (max-width: 780px) {
+  .SiteHeader,
+  .SiteHEader {
+    height: auto;
+    min-height: 68px;
+    flex-wrap: wrap;
+    gap: var(--s3);
+    padding: var(--s3);
+  }
+
+  .IconButton {
+    display: inline-flex;
+  }
+
+  .Nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s3);
+    padding-top: var(--s3);
+  }
+
+  .Nav.is-open,
+  .IconButton[aria-expanded="true"] + .Nav {
+    display: flex;
+  }
+
+  .Page {
+    padding-top: 64px;
+  }
+
+  .Hero {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .Hero__card {
+    min-height: 220px;
+  }
+
+  .Btn {
+    width: 100%;
+  }
+}

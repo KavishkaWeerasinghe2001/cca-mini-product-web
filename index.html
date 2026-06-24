@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA Product Website</title>
+    <link rel="stylesheet" href="styles.css">
+    
+ </head>
+ <body>
+    <!--==== Site Header (Component : SiteHeader) ==== -->
+    <header class="SiteHeader">
+        <a href="./" class="Logo" aria-label="CCA home"> CCA </a> 
+        <button 
+            class="IconButton" 
+            id="menuBtn"
+            type="button"
+            aria-expanded="false" 
+            aria-controls="nav">
+            
+            ☰ <span class="sr-only">Open menu</span>
+        </button>
+        <nav id="nav" class="Nav" aria-label="Primary">
+                <a href="./">Home</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#signup">Sign Up</a>
+        </nav>
+    </header>  
+    <main class="Page">
+        <!--====  Hero (Component : Hero) ==== -->
+        <section class="Hero" aria-label="Hero">
+            <div class="Hero_Content">
+                <h1>Build Fast, Ship Clean</h1>
+                <p>Our platform helps you build amazing products quickly and efficiently. </p>
+                <div class="Hero__actions">
+                    <a class="Btn Btn--primary" href="#signup">Get Started</a>
+                    <a class="Btn Btn--ghost" href="#features">See Features</a> 
+                </div>
+            </div>
+            <div class = "Hero__card" aria-hidden="true">
+                <div class="Stat">
+                    <div class="Stat__value" id="liveUsers">128</div>
+                    <div class="Stat__label">Active Users</div>
+                </div>
+            </div>
+        </section>
+        <!--==== Features (Component : Features) ==== -->
+        <section id = "features" class="Features">
+            <h2>Features</h2>
+
+            <!-- Tabs container -->
+            <div class="Tabs">
+                <div class="Tabs__list" role="tablist" aria-label="Features tabs">
+                    <button class="Tab is-active" type="button" role="tab" data-tab="speed" aria-selected="true">Speed</button>
+                    <button class="Tab"  type="button" role="tab" data-tab="quality" aria-selected="false">Quality</button> 
+                    <button class="Tab"  type="button" role="tab" data-tab="scale" aria-selected="false">Scale</button>
+                </div>
+
+                <!-- Tab panel where JS renders content (state-driven rendering)-->
+                </div class="Tabs__panel" id="tabPanel" role="tabpanel"></div>     
+            </div>
+        </section>
+
+        <!--==== Pricing (Component : Pricing) ==== -->
+        <section id="pricing" class="Pricing">
+            <div class="Pricing__top">
+                <h2>Pricing</h2>
+
+                <!-- Billing switch (monthly/annual) JS reads this input and updates state.billing -->
+                 <label class="Switch">
+                    <input type="checkbox" id="billingToggle" />
+                    <span> Annual billing</span>
+                    <span class="Switch__label">Annual Billing</span>
+                </label>
+
+                <!-- Pricing cards are rendered by JS from data (not hardcoded)-->
+                <div class="Cards" id="pricingCards" aria-label="Pricing plans"></div>
+            </div>
+        </section>
+        <!--==== Sign Up (Component : SignUpForm) ==== -->
+        <section id="signup" class="SignUp">
+            <h2>Sign Up</h2>
+
+            <!--novalidates: we handle validation ourselves for learning-->
+            <form id="signupForm" novalidate>
+                <div class="Field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" autocomplete="name" />
+                    <!-- Inline error container controlled by JavaScript -->
+                     <small class="Field__error" data-error-for="name"></small>
+                </div>
+
+                <div class="Field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" autocomplete="email" />
+                     <small class="Field__error" data-error-for="email"></small>
+                </div>
+
+                <div class="Field">
+                    <label for="track">Track</label>
+                    <input id="track" name="track" autocomplete="off" />
+                     <small class="Field__error" data-error-for="track"></small>
+                </div>
+
+                <div class="Field">
+                    <label for="password">Password</label>
+                    <select id="track" name="track">
+                        <option value="">Select one</option>
+                        <option>Full-Stack</option>
+                        <option >Software Engineer</option>
+                    </select>   
+                    <small class="Field__error" data-error-for="track"></small>
+                </div>
+
+                <button class="Btn Btn--primary" type="submit">Create Account</button>
+
+                <!-- Status message area (success/ prompts)-->
+                <p class="Form__msg" id="formMsg" role="status"></p>
+            </form>
+        </section>
+    </main> 
+    
+    <!--==== Site Footer (Component : SiteFooter) ==== -->
+    <footer class="SiteFooter">
+        <p>&copy; 2024 CCA. All rights reserved.</p>
+    <script src="./app.js" defer></script>
+ </body>
+</html>
