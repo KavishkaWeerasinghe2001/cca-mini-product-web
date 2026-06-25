@@ -342,3 +342,172 @@ p{
     width: 100%;
   }
 }
+
+/* ===== Pricing ====== */
+.Pricing {
+  margin-top: var(--s5);
+  padding: 38px 40px 48px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.Pricing__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.Pricing h2,
+.SignUp h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.Switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  width: fit-content;
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Switch input {
+  width: 18px;
+  height: 18px;
+  accent-color: #34373e;
+}
+
+.Switch__label {
+  display: none;
+}
+
+.Cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+  margin-top: var(--s2);
+}
+
+/* Works for JS-rendered pricing cards */
+.Cards > * {
+  padding: var(--s4);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+.Cards h3 {
+  font-size: 22px;
+  color: var(--text);
+}
+
+.Cards p {
+  color: var(--muted);
+}
+
+.Cards .price,
+.Cards .Price,
+.Cards strong {
+  display: block;
+  margin: var(--s3) 0;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--text);
+}
+
+/* ===== Sign Up ====== */
+.SignUp {
+  margin-top: var(--s5);
+  padding: 38px 40px 48px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+
+#signupForm {
+  display: grid;
+  gap: var(--s3);
+  max-width: 560px;
+}
+
+.Field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+}
+
+.Field label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.Field input,
+.Field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--s3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.Field input:focus,
+.Field select:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+}
+
+.Field select option {
+  background: #121622;
+  color: var(--text);
+}
+
+.Field__error {
+  min-height: 18px;
+  color: #ff8a8a;
+  font-size: 14px;
+}
+
+.Form__msg {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ===== Footer ====== */
+.SiteFooter {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s4) var(--s3) var(--s6);
+  text-align: center;
+  color: var(--muted);
+}
+
+.SiteFooter p {
+  margin: 0;
+}
+
+/* ===== Mobile additions ====== */
+@media (max-width: 780px) {
+  .Pricing,
+  .SignUp {
+    padding: 28px;
+  }
+
+  .Cards {
+    grid-template-columns: 1fr;
+  }
+
+  #signupForm {
+    max-width: none;
+  }
+}
