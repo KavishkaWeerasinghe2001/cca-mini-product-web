@@ -124,7 +124,7 @@ function renderTabs() {
 
     tabPanel.innerHTML = `
     <div>
-       <h3 style="margin:0 0 12px;">${data}</h3>
+       <h3 style="margin:0 0 12px;">${data.title}</h3>
        <p>${data.body}</p>
        <ul>
           ${data.points.map((p) => `<li>${p}</li>`).join("")}
@@ -157,11 +157,11 @@ function renderPricing(){
         return `
         <article class="Card">
             <h3 style="margin: 0;">${plan.name} </h3>
-            <div class="Card__price>$${price}${suffix}</div>
+            <div class="Card__price">$${price}${suffix}</div>
             <ul>
                 ${plan.perks.map((p) => `<li>${p}</li>`).join("")}
             </ul>
-            <!-- data-plan lets us know which plan was clicked -->
+            
             <button class="Btn Btn--primary" type="button" data-plan="${plan.name}">
             Choose ${plan.name}
             </button>
@@ -200,15 +200,26 @@ billingToggle.addEventListener("change", () => {
     renderPricing(); // only re-render the pricing cards, not the whole page
 });
 
-pricingCards.addEventListener("click", () => {
+pricingCards.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-plan]");
     if(!btn) return;
 
     const plan = btn.dataset.plan;
 
     //give the user a simple promt + move them to the form
-    formMsg.textContent = `Nice = you selected ${plan}. Now sign up below.`;
+    formMsg.textContent = `Nice - you selected ${plan}. Now sign up below.`;
     scrollToId("signup");
 });
+
+/* 6. Form validation (bonus) */
+/* 7. Current live user counter (bonus) */
+/* 8. Initialization (Boot) function */
+
+loadPref();
+renderAll(); // load any saved preference from localStorage
+
+
+
+
 
 
