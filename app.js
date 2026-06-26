@@ -212,11 +212,86 @@ pricingCards.addEventListener("click", (e) => {
 });
 
 /* 6. Form validation (bonus) */
+function setError(fieldName, message){
+    const el = document.querySelector(`[data-error-for="${fieldName}"]`);
+    if(el) el.textContent = message || "";
+}
+
+function isValidateEmail(email){
+    const normalized = String(email || "").trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(normalized)) return false;
+
+    if(normalized.includes("..")) return false;
+
+    return true;
+}
+
+function validate(values){
+    let ok = true;
+
+    //validate name
+    if(!values.name || values.name.trim().length < 2){
+        setError("name", "Please enter a validate name (at least 2 characters).");
+        ok=false;
+    }else{
+        setError("name");
+    }
+
+    //validate email
+    if(!isValidateEmail(values.email)){
+        setError("email", "Please enter a validate email address");
+        ok = false;
+    }else{
+        setError("email");
+    }
+
+    //validate track
+    if(values.track){
+        setError("track", "Please select a track");
+        ok = false;
+    }else{
+        setError("track");
+    }
+
+    return ok;
+}
+
+signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    formMsg.textContent = ""; // Clear any previous messages
+
+    const values = {
+        name: signupForm.name.value,
+        email: signupForm.email.value,
+        track: signupForm.track.value
+
+    }
+
+    if(validate(values)) return;
+
+    //If validation passes, show a success message
+    formMsg.textContent = `Thanks for signing up, ${values.name}! We'll be in touch at ${values.email}.`;
+    signupForm.reset(); //clear the form
+    
+});
 /* 7. Current live user counter (bonus) */
+
+function startLiveUserTicker(){
+    const liveUsers = document.getElementById("liveUsers");
+    if(!liveUsers) return;
+
+    setInterval(() => {
+        const current = Number(liveUsers.textContent) || 0;
+        const delta = Math.random() > 0.5 ? 1 : -1;
+        const next = Math.max(80, current + delta);
+        liveUsers.textContent = String(next);
+    }, 1500);
+}
 /* 8. Initialization (Boot) function */
 
-loadPref();
-renderAll(); // load any saved preference from localStorage
+loadPref(); // load any saved preference from localStorage
+renderAll(); // Render the UI based on the current state
+startLiveUserTicker(); // Start tthe live user counter 
 
 
 
